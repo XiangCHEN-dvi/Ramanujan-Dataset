@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/xiangchen/Ramanujan-Dataset/data/schema.json",
   "title": "Ramanujan's Formulae",
-  "description": "A labeled Entry, Corollary, or Example from Berndt's edited volumes.",
+  "description": "One of Ramanujan's original mathematical results from Berndt's edited volumes (Entry/Corollary/Example in the Notebooks; Entry or mined fragments in the Lost Notebook).",
   "type": "object",
   "required": ["id", "content", "topics"],
   "additionalProperties": false,

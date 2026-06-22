@@ -374,3 +374,230 @@ Ch35: 41 (theta-function values at \(e^{-\pi/n}\)). Ch36: 82 modular equations. 
 Ch38: 24 approximations (Entries 1–23). Ch39: 20 First Notebook miscellany. Entry 7 in Ch39 reconstructed from proof context where OCR omitted the statement.
 
 Bootstrap: `python scripts/jsonl_to_module.py --part 5 --chapter N`. OCR: `python scripts/extract_ocr_drafts.py --part 5`.
+
+---
+
+## Ramanujan's Lost Notebook — Part I (Ch.1–18)
+
+Source PDF: `~/Downloads/RLN_PartI.pdf`. **262 records** (253 formal `Entry` + 9 mined Ch. 10 fragments). Collection criteria: `CONVENTIONS.md` (Entry-only; no editor Theorem/Lemma/Corollary).
+
+### ISSUE-RLN-01: Entry-only refactor (complete)
+
+Removed 123 editor Theorem/Lemma/Corollary records from the prior 385-entry draft. `scripts/filter_rln_entry_only.py` and `extract_entries_rln.py` (Entry-only OCR) enforce this going forward.
+
+### ISSUE-RLN-02: Different heading scheme
+
+RLN formal entries use `Entry 1.2.1` (chapter.section.number). IDs: `RLN-P1-C01-Entry1-2-1`. Mined fragments use synthetic IDs (`Argument01`, `Formula0203`).
+
+### ISSUE-RLN-03: Chapter detection
+
+RLN Part I has no `CHAPTER N` page starts. Chapters begin at section `N.1 Introduction` (PDF pages 20, 67, 95, …). See `scripts/extract_pdf_rln.py`.
+
+### ISSUE-RLN-04: Cross-chapter references in Ch.18
+
+Section 18.2 lists Lambert-series identities with cross-references to entries in other chapters. Only labels whose first number matches the chapter are kept (e.g. `Entry18-2-7`, not `Entry12-2-1`).
+
+### ISSUE-RLN-05: Ch. 10 mined fragments (pp. 358–361)
+
+Ch. 10 has no `Entry` headings. Nine records mined from Ramanujan's quoted arguments and calculations: `RLN-P1-C10-Argument01`–`Argument04`, `Formula0201`–`Formula0205`. Editor Theorems 10.2.1 (Bailey pairs) and 10.5.1 (Schur) excluded.
+
+### ISSUE-RLN-06: Thin Entry chapters
+
+After Entry-only filtering: Ch. 7 (3), Ch. 8 (5), Ch. 13 (2 formal Entries on pp. 57 and 26). Remaining chapter material is editorial proof development without additional manuscript Entry labels.
+
+Regenerate OCR (Entry-only): `python scripts/extract_ocr_drafts_rln.py --pdf ~/Downloads/RLN_PartI.pdf`
+
+---
+
+## Ramanujan's Lost Notebook — Part II (Ch.1–16)
+
+Source PDF: `~/Downloads/RLN_PartII.pdf`. **210 records** (all formal `Entry`). Collection criteria: Entry-only; no editor Theorem/Lemma/Corollary.
+
+### Summary counts (RLN Part II)
+
+| Chapter | Title | Records | OCR draft |
+|---------|-------|---------|-----------|
+| 1 | Heine Transformation | 52 | 52 |
+| 2 | Sears–Thomae Transformation | 9 | 9 |
+| 3 | Bilateral Series | 26 | 26 |
+| 4 | Well-Poised Series | 25 | 25 |
+| 5 | Bailey's Lemma | 14 | 14 |
+| 6 | Partial Theta Functions | 26 | 26 |
+| 7 | Special Identities | 9 | 9 |
+| 8 | Theta Function Identities | 5 | 5 |
+| 9 | Cubic Class Invariant λₙ | 1 | 1 |
+| 10 | Miscellaneous Elliptic/Theta | 8 | 8 |
+| 11 | Eisenstein Coefficient Formulas | 11 | 11 |
+| 12 | Matlock House Letters | 3 | 3 |
+| 13 | Eisenstein Series & Modular Equations | 7 | 7 |
+| 14 | Series Representable via Eisenstein Series | 5 | 5 |
+| 15 | Eisenstein Series & π | 5 | 5 |
+| 16 | Miscellaneous Eisenstein Series | 4 | 4 |
+| **Total** | | **210** | **210** |
+
+Combined dataset: **2824** records (2352 RN + 262 RLN P1 + 210 RLN P2).
+
+### ISSUE-RLN2-01: Entry-only curation (complete)
+
+All 16 chapters curated in `scripts/entries/rln_p2_ch01.py` … `rln_p2_ch16.py`. Editor Theorems, Lemmas, Corollaries, and proof prose excluded.
+
+### ISSUE-RLN2-02: Ch.9 single Entry table
+
+Entry 9.1.1 lists Ramanujan's values for the cubic class invariant λₙ for all n ≡ 1 (mod 8) that he recorded (11 stated, 10 unstated). Kept as one record `RLN-P2-C09-Entry9-1-1`.
+
+### ISSUE-RLN2-03: Thin chapters
+
+Ch.9 (1 Entry), Ch.12 (3 Entries), Ch.16 (4 Entries). Ch.16 Section 16.5 is a location guide cross-referencing entries in other chapters — not included as separate records.
+
+### ISSUE-RLN2-04: Formal/divergent entries
+
+Entries marked "Formally" in Berndt (e.g. Entry 5.3.10, 5.4.3, 6.4.6) retain the hypothesis plus the identity statement only.
+
+Regenerate OCR (Entry-only): `python scripts/extract_ocr_drafts_rln.py --part 2 --pdf ~/Downloads/RLN_PartII.pdf`
+
+---
+
+## Ramanujan's Lost Notebook — Part III (Ch.2–10)
+
+Source PDF: `~/Downloads/RLN_PartIII.pdf`. **123 records** (80 formal `Entry` + 43 mined Ch. 5/10 fragments). Ch. 1 is editorial introduction only — excluded.
+
+### Summary counts (RLN Part III)
+
+| Chapter | Title | Records | OCR draft |
+|---------|-------|---------|-----------|
+| 2 | Ranks and Cranks, Part I | 5 | 5 |
+| 3 | Ranks and Cranks, Part II | 7 | 7 |
+| 4 | Ranks and Cranks, Part III | 3 | 3 |
+| 5 | Partition/Tau Manuscript | 27 | 0 (mined) |
+| 6 | Partition Function (pp. 189, 182) | 15 | 15 |
+| 7 | Generalized Tau Congruences | 9 | 9 |
+| 8 | Forty Rogers–Ramanujan Identities | 35 | 35 |
+| 9 | Circular Summation | 6 | 6 |
+| 10 | Highly Composite Numbers | 16 | 0 (mined) |
+| **Total** | | **123** | **80** |
+
+Combined dataset: **2947** records (2352 RN + 262 RLN P1 + 210 RLN P2 + 123 RLN P3).
+
+### ISSUE-RLN3-01: Entry-only curation (Ch. 2–4, 6–9)
+
+Seven chapters curated in `scripts/entries/rln_p3_ch02.py` … `rln_p3_ch09.py` (skipping Ch. 1). Ch. 8 contains all 35 identities (Entry 8.3.1–8.3.35).
+
+### ISSUE-RLN3-02: Ch. 5 mined manuscript (27 records)
+
+No `Entry` labels — Berndt reproduces Ramanujan's unpublished partition/tau manuscript. Mined 27 key results with synthetic IDs (`Formula051011`, `Congruence0501`, etc.): famous $p(n)$ congruences mod 5, 7, 11; $\tau(n)$ divisibility; general prime-modulus framework (5.15.10); generating-function identities. Full 87-page manuscript not transcribed line-by-line.
+
+### ISSUE-RLN3-03: Ch. 10 mined manuscript (16 records)
+
+No `Entry` labels — Ramanujan's unpublished highly composite numbers paper (Sections 10.52–10.75). Mined definitions, formulas (10.52.268)–(10.53.275), $\sigma_{-s}(N)$ bounds, generalized highly composite numbers, and opening largely-composite table entries.
+
+### ISSUE-RLN3-04: Ch. 6 false claims noted
+
+Entries 6.4.1–6.4.3 are Ramanujan's "beautiful, false, but correctable" claims on p. 189; retained as stated with Berndt's correction context trimmed from `content`.
+
+Regenerate OCR (Entry-only): `python scripts/extract_ocr_drafts_rln.py --part 3 --pdf ~/Downloads/RLN_PartIII.pdf`
+
+---
+
+## Ramanujan's Lost Notebook — Part IV (Ch.2–21)
+
+Source PDF: `~/Downloads/RLN_PartIV.pdf`. **167 records** (128 formal `Entry` + 39 mined fragments). Ch. 1 is editorial introduction only — excluded.
+
+### Summary counts (RLN Part IV)
+
+| Chapter | Title | Records | OCR draft |
+|---------|-------|---------|-----------|
+| 2 | Double Series of Bessel Functions | 2 | 2 |
+| 3 | Koshliakov and Guinand Formulas | 9 | 9 |
+| 4 | Theorems Featuring the Gamma Function | 9 | 9 |
+| 5 | Hypergeometric Series | 6 | 6 |
+| 6 | Euler's Constant γ Manuscripts | 6 | 6 |
+| 7 | Diophantine Approximation | 2 | 2 |
+| 8 | Number Theory | 11 | 11 |
+| 9 | Divisor Sums | 12 | 12 |
+| 10 | Zeta Function Identities | 5 | 5 |
+| 11 | Sums Involving Primes | 10 | 0 (mined) |
+| 12 | Infinite Series Identities Manuscript | 17 | 17 |
+| 13 | Fourier and Laplace Transforms | 10 | 10 |
+| 14 | Integral Analogues of Theta/Gauss Sums | 20 | 20 |
+| 15 | Mellin Transform Functional Equations | 8 | 0 (mined) |
+| 16 | Product Formula Preliminary Paper | 8 | 0 (mined) |
+| 17 | Arctan Integral Preliminary Paper | 5 | 0 (mined) |
+| 18 | Definite Integrals Partial Manuscript | 1 | 1 |
+| 19 | Miscellaneous Results in Analysis | 10 | 10 |
+| 20 | Elementary Results | 8 | 8 |
+| 21 | Enigmatic Partial Manuscript | 8 | 0 (mined) |
+| **Total** | | **167** | **128** |
+
+Combined dataset (as of RLN P4): **3114** records (2352 RN + 262 RLN P1 + 210 RLN P2 + 123 RLN P3 + 167 RLN P4).
+
+### ISSUE-RLN4-01: Entry-only curation (Ch. 2–10, 12–14, 18–20)
+
+Fifteen chapters with formal `Entry` labels curated in `scripts/entries/rln_p4_ch02.py` … `rln_p4_ch20.py` (skipping Ch. 1). Ch. 2 has only Entries 2.1.1–2.1.2 (two Bessel double-series identities).
+
+### ISSUE-RLN4-02: Mined manuscript chapters (39 records)
+
+No `Entry` labels in Ch. 11, 15, 16, 17, 21 — Ramanujan's rough/partial manuscripts reproduced by Berndt. Mined with synthetic IDs (`Formula1101`, `Formula1501`, etc.): prime-sum manuscripts (10), Mellin functional equations (8), product-formula preliminary paper (8), arctan integral paper (5), enigmatic early manuscript (8).
+
+### ISSUE-RLN4-03: Thin Entry chapters
+
+Ch. 2 (2 Entries), Ch. 7 (2 Entries), Ch. 18 (1 Entry). Ch. 8 includes Dickman's function and ζ(½) reinterpretation among 11 Entries.
+
+### ISSUE-RLN4-04: False or corrected claims
+
+Ch. 19 Entries 19.2.1–19.2.2 are Ramanujan's false claims (retained as stated). Ch. 20 Entry 20.2.4 and 20.4.1 use Berndt-corrected forms. Ch. 21 mined records note where Berndt flags errors.
+
+Regenerate OCR (Entry-only): `python scripts/extract_ocr_drafts_rln.py --part 4 --pdf ~/Downloads/RLN_PartIV.pdf`
+
+---
+
+## Ramanujan's Lost Notebook — Part V (Ch.2–19)
+
+Source PDF: `~/Downloads/RLN_PartV.pdf`. **90 records** (70 formal `Entry` + 20 mined from Ramanujan's last letter). Ch. 1 is editorial introduction only — excluded.
+
+### Summary counts (RLN Part V)
+
+| Chapter | Title | Records | OCR draft |
+|---------|-------|---------|-----------|
+| 2 | Third Order Mock Theta: Elementary Identities | 9 | 9 |
+| 3 | Fifth Order Mock Theta: Elementary Identities | 14 | 14 |
+| 4 | Third Order Mock Theta: Partial Fractions | 4 | 4 |
+| 5 | Mock Theta Conjectures: Equivalence | 2 | 2 |
+| 6 | Fifth Order Mock Theta: Proof of Conjectures | 0 | 0 (proof chapter) |
+| 7 | Sixth Order Mock Theta Functions | 7 | 7 |
+| 8 | Tenth Order Mock Theta: Part I | 4 | 4 |
+| 9 | Tenth Order Mock Theta: Part II | 0 | 0 (proof chapter) |
+| 10 | Tenth Order Mock Theta: Part III | 0 | 0 (proof chapter) |
+| 11 | Tenth Order Mock Theta: Part IV | 2 | 2 |
+| 12 | Transformation Formulas (10th Order) | 4 | 4 |
+| 13 | Mordell Integral and Appell–Lerch Sums | 1 | 1 |
+| 14 | Ramanujan's Last Letter to Hardy | 20 | 0 (mined) |
+| 15 | Euler Products in the Lost Notebook | 14 | 14 |
+| 16 | Continued Fractions | 6 | 6 |
+| 17 | Recent Work on Mock Theta Functions | 0 | 0 (survey) |
+| 18 | Commentary on Volumes I–IV | 0 | 0 (editorial) |
+| 19 | The Continuing Mystery | 3 | 3 |
+| **Total** | | **90** | **70** |
+
+Combined dataset: **3204** records (2352 RN + 262 RLN P1 + 210 RLN P2 + 123 RLN P3 + 167 RLN P4 + 90 RLN P5).
+
+### ISSUE-RLN5-01: Entry-only curation (Ch. 2–5, 7–8, 11–13, 15–16, 19)
+
+Twelve chapters with formal `Entry` labels curated in `scripts/entries/rln_p5_ch02.py` … `rln_p5_ch19.py` (skipping Ch. 1). Mock-theta chapters (2–5, 7–8, 11–13) cover third/fifth/sixth/tenth order identities and transformations.
+
+### ISSUE-RLN5-02: Proof chapters excluded (Ch. 6, 9, 10)
+
+Ch. 6 proves mock theta conjectures; Ch. 9–10 prove tenth-order identities. No `Entry` labels; editor Theorems (e.g. 6.1.1) are not Ramanujan manuscript results — empty modules.
+
+### ISSUE-RLN5-03: Mined last letter (Ch. 14, 20 records)
+
+Ch. 14 reproduces Ramanujan's 12 January 1920 letter without `Entry` labels. Mined with synthetic IDs `RLN-P5-C14-Letter01` … `Letter20`: mock-θ concept, Eulerian series (A)/(B)/(C), asymptotics, third/fifth/seventh-order definitions and identities.
+
+### ISSUE-RLN5-04: Editorial chapters excluded (Ch. 17, 18)
+
+Ch. 17 surveys recent work; Ch. 18 is commentary on prior volumes — no Ramanujan results.
+
+### ISSUE-RLN5-05: Euler products and corrected claims (Ch. 15)
+
+Entry 15.2.8 is Ramanujan's incorrect Euler product (retained as stated). Entries 15.4.1–15.4.4 transcribe Ramanujan's Watson-copied manuscript lists of modular-form Euler products.
+
+Regenerate OCR (Entry-only): `python scripts/extract_ocr_drafts_rln.py --part 5 --pdf ~/Downloads/RLN_PartV.pdf`
